@@ -1,40 +1,25 @@
-import Image from 'next/image';
-import React from 'react';
-import productsData from './data/productData';
+import Image from "next/image";
+import React from "react";
+import type { Upload } from "@prisma/client";
 
-// interface Product {
-//   id: number;
-//   img: string;
-//   title: string;
-//   price: number;
-// }
-
-
-
-const CartComp: React.FC<{ masukKreanjang: (Product: any) => void }> = ({ masukKreanjang }) => {
+const CartComp = ({ data }: { data: Upload }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {productsData.map((product) => (
-        <div
-          key={product.id}
-          className="max-w-sm rounded overflow-hidden shadow-lg p-4"
-          onClick={() => masukKreanjang(product)} // Klik pada produk individual
-        >
-          <Image
-            className="w-full bg-cover"
-            src={product.img}
-            alt={product.title}
-            width={100}
-            height={100}
-          />
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{product.title}</div>
-            <p className="text-gray-700 text-base">${product.price}</p>
-          </div>
+    <>
+      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <Image
+          alt={data.title}
+          className="w-full h-48 object-cover"
+          height="300"
+          src={data.image}
+          width="500"
+        />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">{data.title}</div>
+          <div className="text-lg mb-2">{data.description}</div>
+          <p className="text-gray-700 text-base">Rp{data.price}</p>
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 };
-
 export default CartComp;

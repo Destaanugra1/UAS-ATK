@@ -53,7 +53,7 @@ import {prisma} from "../lib/prisma"
     } catch {
       return { messege: "Faild data" };
     }
-    revalidatePath("/");
-    redirect("/");
+    revalidatePath("/dashboard/admin");
+    redirect("/dashboard/admin");
   };
 

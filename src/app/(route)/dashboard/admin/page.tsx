@@ -1,10 +1,15 @@
-import { SidebarDemo } from "@/app/components/Dashboard";
+import { TableData } from "@/app/components/Table";
+import { getImages } from "@/app/lib/data"
 
-const Dashboard = () => {
+
+export default async function  Dashboard () {
+
+  const data = await getImages();
   return (
-    <div className="[height: 100vh]">
-      <SidebarDemo />
-    </div>
+    <>
+      <div className="">
+        <TableData data={data} />
+      </div>
+    </>
   )
 }
-export default Dashboard;

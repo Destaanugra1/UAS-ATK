@@ -8,7 +8,7 @@ const invoices = [
   {
     invoice: "INV002",
     paymentStatus: "Pending",
-    totalAmount: "$150.00",
+    totalAmount: "$10.00",
     paymentMethod: "PayPal",
   },
   {
