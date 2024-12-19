@@ -4,10 +4,10 @@ import React from "react";
 import "./style.css";
 
 export default function Layout({
-  children
-}: {
+  children,
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <div className="flex h-screen">
       <Sidebar /> {/* Sidebar akan tetap ada */}

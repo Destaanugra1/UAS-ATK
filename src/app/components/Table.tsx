@@ -11,11 +11,12 @@ import {
 } from "@/app/components/ui/table";
 import type { Upload } from "@prisma/client";
 import Image from "next/image";
+import { DeleteButton, EditButtom } from "./button";
 
 export const TableData = ({ data }: { data: Upload[] }) => {
   return (
-    <div>
-      <Table className="border">
+    <div className="flex">
+      <Table className="border justify-center ">
         <TableCaption>Belanja Puas Harga Pas</TableCaption>
         <TableHeader>
           <TableRow>
@@ -24,6 +25,7 @@ export const TableData = ({ data }: { data: Upload[] }) => {
             <TableHead>description</TableHead>
             <TableHead className="">Price</TableHead>
             <TableHead className="">image</TableHead>
+            <TableHead className="">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -36,11 +38,15 @@ export const TableData = ({ data }: { data: Upload[] }) => {
               <TableCell>
                 <Image
                   alt={item.title}
-                  className="object-cover"
+                  className="object-cover rounded"
                   height={50}
                   src={item.image}
                   width={50} />
               </TableCell>
+                <TableCell className="flex space-x-2 text-white">
+                  <EditButtom id={item.id}/>
+                  <DeleteButton id={item.id} />
+                </TableCell>
             </TableRow>
           ))}
         </TableBody>

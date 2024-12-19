@@ -5,7 +5,7 @@ import type { Upload } from "@prisma/client";
 const CartComp = ({ data }: { data: Upload }) => {
   return (
     <>
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="bg-white hover:bg-slate-200 shadow-md rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
         <Image
           alt={data.title}
           className="w-full h-48 object-cover"
