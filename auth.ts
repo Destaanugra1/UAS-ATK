@@ -1,12 +1,10 @@
 import NextAuth from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import Credentials from "next-auth/providers/credentials";
 import { SignInSchema } from "@/lib/zod";
 import { compareSync } from "bcrypt-ts";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
@@ -44,7 +42,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     authorized({auth, request: {nextUrl}}) {
       const isLoggedIn = !!auth?.user;
-      const ProtectedRoutes = ["/user", "/dashboard", "product"]
+      // proteksi routes
+      const ProtectedRoutes = ["/user", "/dashboard", "/product", "/dashboard/admin", "/dashboard/create"];
 
       // logika jika user belum login maka akan di proteksi
       if(!isLoggedIn && ProtectedRoutes.includes(nextUrl.pathname)) {
@@ -53,6 +52,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       // logika jika user sudah login tidak bisa akses /login
       if(isLoggedIn && nextUrl.pathname.startsWith("/login")) {
+        return Response.redirect(new URL("/user", nextUrl))
+      }
+
+      // logika jika user tidak bisa akses /dashboard dan /dashboard/admin
+      if(isLoggedIn && auth.user.role !== 'admin' && (nextUrl.pathname.startsWith("/dashboard") || nextUrl.pathname.startsWith("/dashboard/admin") || nextUrl.pathname.startsWith("/dashboard/create"))) {
         return Response.redirect(new URL("/user", nextUrl))
       }
 
