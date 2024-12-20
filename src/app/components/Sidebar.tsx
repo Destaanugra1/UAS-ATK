@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -112,43 +111,13 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link
-                href="/sign-in"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <SignedIn>
-                  <div className="gap-2">
-                    {/* <OrganizationSwitcher /> */}
-                    <UserButton />
-                  </div>
-                </SignedIn>
-                <SignedOut>
-                  <div className="border">
-                    <Link className="" href="/sign-in">
-                      Sign-in
-                    </Link>
-                  </div>
-                </SignedOut>
-                <span className="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-              </Link>
+              
             </li>
           </ul>
         </div>
         <li>
           <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <div>
-              <SignedIn>
-                <div className="gap-2">
-                  {/* <OrganizationSwitcher /> */}
-                  <UserButton />
-                </div>
-              </SignedIn>
-              <SignedOut>
-                <div className="border">
-                  <Link className="" href="/sign-in">
-                    Sign-in
-                  </Link>
-                </div>
-              </SignedOut>
             </div>
           </div>
         </li>

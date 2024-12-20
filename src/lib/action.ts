@@ -5,14 +5,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "./prisma";
 import { getImagesById } from "./data";
+import { RegisterSchema, SignInSchema } from "./zod";
+import { hashSync } from "bcrypt-ts";
+import { signIn } from "../../auth";
+import { AuthError } from "next-auth";
 
-// interface UploadSchemaType {
-//   title: string;
-//   deskripsi: string;
-//   harga: string;
-//   image: File;
-// }
 
+// uplaoad
 const UploadSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(3),
@@ -28,6 +27,8 @@ const UploadSchema = z.object({
     }),
 });
 
+
+// edit 
 const EditSchema = z.object({
   title: z.string().min(1),
   description: z.string().min(3),
@@ -43,6 +44,8 @@ const EditSchema = z.object({
     .optional(),
 });
 
+
+// validasi Upload
 export const UpluadImage = async (prevState: unknown, FormData: FormData) => {
   const validatedFileds = UploadSchema.safeParse(
     Object.fromEntries(FormData.entries())
@@ -120,7 +123,6 @@ export const UpdateImage = async (
 };
 
 // delete Image
-
 export const deleteImage = async (id: string) => {
   const data = await getImagesById(id);
   if (!data) return { message: "No data Found" };
@@ -135,4 +137,66 @@ export const deleteImage = async (id: string) => {
   }
 
   revalidatePath("/dashboard/admin");
+};
+
+// register
+export const signUpCredential = async (
+  prevState: unknown,
+  formData: FormData
+) => {
+  const validatedFileds = RegisterSchema.safeParse(
+    Object.fromEntries(formData.entries())
+  );
+
+  if (!validatedFileds.success) {
+    return {
+      error: validatedFileds.error.flatten().fieldErrors,
+    };
+  }
+  const { name, email, password } = validatedFileds.data;
+  const hashPassword = hashSync(password, 10);
+
+  try {
+    await prisma.user.create({
+      data: {
+        name,
+        email,
+        password: hashPassword,
+      },
+    });
+  } catch {
+    return { message: "Gagal buat user" };
+  }
+  redirect("/login");
+};
+
+// Login credential action
+export const signIncCredential = async (
+  prevState: unknown,
+  formData: FormData
+) => {
+  const validatedFileds = SignInSchema.safeParse(
+    Object.fromEntries(formData.entries())
+  );
+
+  if (!validatedFileds.success) {
+    return {
+      error: validatedFileds.error.flatten().fieldErrors,
+    };
+  }
+  const { email, password } = validatedFileds.data;
+
+  try {
+    await signIn("credentials", { email, password, redirectTo: "/user" });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { message: "Email atau password salah" };
+        default:
+          return { message: "Gagal login" };
+      }
+    }
+    throw error;
+  }
 };

@@ -35,7 +35,7 @@ const EditForm = ({data}:{data: Upload}) => {
       </div>
       <div className="mb-4 pt-2">
         <input
-          type="text"
+          type="number"
           name="price"
           className="py-2 px-4 rounded-sm border-gray-400"
           placeholder="Rp-Harga"

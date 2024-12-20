@@ -1,10 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+
 
 const HomeComp = () => {
   return (
@@ -17,18 +13,12 @@ const HomeComp = () => {
             </a>
             {/* login form */}
             <div className="">
-              <SignedIn>
-                <div className="gap-2">
-                  {/* <OrganizationSwitcher /> */}
-                  <UserButton />
-                </div>
-              </SignedIn>
-              <SignedOut>
+
                 <div className="border">
-                  <Link className="" href="/sign-in">Sign-in
+                  <Link className="bg-red-700 p-2 rounded text-white hover:bg-red-400" href="/dashboard">dashboard
                   </Link>
                 </div>
-              </SignedOut>
+              
             </div>
           </div>
         </div>
