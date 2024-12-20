@@ -1,8 +1,10 @@
-import React from 'react'
+import UserTable from '@/app/components/auth/user-table'
 
 const Dashboard = () => {
   return (
-    <div className='text-center'>Dashboard</div>
+    <div className='text-center'>
+      <UserTable />
+    </div>
   )
 }
 

@@ -39,4 +39,34 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+
+  // callback proteksi jika user sudah login dan sudah login
+  callbacks: {
+    authorized({auth, request: {nextUrl}}) {
+      const isLoggedIn = !!auth?.user;
+      const ProtectedRoutes = ["/user", "/dashboard", "product"]
+
+      // logika jika user belum login maka akan di proteksi
+      if(!isLoggedIn && ProtectedRoutes.includes(nextUrl.pathname)) {
+        return Response.redirect(new URL("/login", nextUrl))
+      }
+
+      // logika jika user sudah login tidak bisa akses /login
+      if(isLoggedIn && nextUrl.pathname.startsWith("/login")) {
+        return Response.redirect(new URL("/user", nextUrl))
+      }
+
+      return true
+    },
+    jwt({token, user}) {
+      if(user) token.role = user.role;
+      return token
+    },
+
+    session({session, token}) {
+      session.user.id = token.sub
+      session.user.role = token.role;
+      return session;
+    }
+  }
 });

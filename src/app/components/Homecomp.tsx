@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import { auth } from "../../../auth";
 
-
-const HomeComp = () => {
+const HomeComp = async () => {
+  const session = await auth();
   return (
     <>
       <header className="header">
@@ -13,12 +14,24 @@ const HomeComp = () => {
             </a>
             {/* login form */}
             <div className="">
-
+              {session && (
                 <div className="border">
-                  <Link className="bg-red-700 p-2 rounded text-white hover:bg-red-400" href="/dashboard">dashboard
+                  <Link
+                    className="bg-red-700 p-2 rounded text-white hover:bg-red-400"
+                    href="/user">
+                    Profile
                   </Link>
                 </div>
-              
+              )}
+              {!session && (
+                <div className="border">
+                  <Link
+                    className="bg-red-700 p-2 rounded text-white hover:bg-red-400"
+                    href="/user">
+                    Login
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

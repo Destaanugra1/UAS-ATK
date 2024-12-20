@@ -1,4 +1,6 @@
 import { prisma } from "./prisma";
+import { auth } from "../../auth";
+import { redirect } from "next/navigation";
 
 export const getImages = async () => {
   try {
@@ -21,3 +23,15 @@ export const getImagesById = async (id: string) => {
     throw new Error("Faild to fetch data");
   }
 };
+
+export const getUsers = async() => {
+  const session = await auth();
+  if(!session || !session.user || session.user.role !== "admin") redirect("user");
+
+  try {
+    const users = await prisma.user.findMany();
+    return users
+  }catch (error) {
+    console.log(error);
+  }
+}
