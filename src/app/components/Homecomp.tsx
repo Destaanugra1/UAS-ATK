@@ -70,7 +70,7 @@ const HomeComp = async () => {
                 <p>
                   Temukan berbagai kebutuhan alat tulis untuk sekolah dan kantor
                 </p>
-                <a href="#products" className="cta-button">
+                <a href="#card" className="cta-button">
                   Belanja Sekarang
                 </a>
               </div>

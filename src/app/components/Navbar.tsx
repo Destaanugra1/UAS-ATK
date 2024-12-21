@@ -1,22 +1,96 @@
+"use client";
+import React, { useState } from "react";
+import { FiShoppingCart } from "react-icons/fi";
+import { useCart } from "../../contexts/CartContext";
+import Image from "next/image";
 
-import React from "react";
+export interface CartItem {
+  id: number;
+
+  name: string;
+
+  price: number;
+
+  quantity: number;
+}
 
 export const Navbar = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cart, removeFromCart, total } = useCart();
 
-return (
-<nav className="navbar">
-            <div className="container">
-                <div className="logo">TOKO ATK</div>
-                <div className="search-bar">
-                    <input type="text" placeholder="Cari produk ATK..." />
-                    <button type="submit">Cari</button>
-                </div>
-                <div className="cart">
-                    <a href="/cart" className="cart-icon">
-                        <span className="cart-count">0</span>
-                    </a>
-                </div>
+  const toggleCart = () => {
+    setIsCartOpen((prev) => !prev);
+  };
+
+  return (
+    <>
+      <nav className="navbar">
+        <div className="container flex justify-between items-center">
+          <div className="logo text-xl font-bold">TOKO ATK</div>
+          <div className="search-bar flex gap-2">
+            <input
+              type="text"
+              placeholder="Cari produk ATK..."
+              className="border px-2 py-1 rounded-md"
+            />
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-1 rounded-md">
+              Cari
+            </button>
+          </div>
+          <div className="cart">
+            <button
+              onClick={toggleCart}
+              className="relative text-2xl text-gray-700 focus:outline-none">
+              <FiShoppingCart />
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                {cart.length}
+              </span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {isCartOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={toggleCart}>
+          <div
+            className="fixed right-0 top-0 h-full w-80 bg-white shadow-lg z-50 p-4"
+            onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-lg font-bold mb-4">Keranjang</h2>
+            <ul className="space-y-4">
+              {cart.map((item) => (
+                <li
+                  key={item.id}
+                  className="flex justify-between items-center border-b pb-2">
+                    <Image src={item.image} alt={item.title} width={50} height={50} />
+                  <div>
+                    <h3 className="font-semibold">{item.title}</h3>
+                    <p className="text-sm text-gray-600">
+                      {item.quantity} x Rp{item.price}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-500 text-sm">
+                    Hapus
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <p className="text-right font-bold text-lg">
+                Total: Rp{total.toLocaleString()}
+              </p>
+              <button className="bg-green-500 text-white w-full py-2 rounded-lg mt-4">
+                Checkout
+              </button>
             </div>
-        </nav>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
