@@ -16,6 +16,9 @@ const NavUser = async () => {
             <li>
               <Link href="/">Home</Link>
             </li>
+            <li>
+              <Link href="/tim" className="font-bold">Kelompok 1</Link>
+            </li>
             {session?.user.role === "admin" ?(
             <li>
               <Link href="/dashboard">Dashboard</Link>

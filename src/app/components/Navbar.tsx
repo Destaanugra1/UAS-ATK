@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useCart } from "../../contexts/CartContext";
 import Image from "next/image";
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 
 export interface CartItem {
   id: number;
@@ -65,7 +66,12 @@ export const Navbar = () => {
                 <li
                   key={item.id}
                   className="flex justify-between items-center border-b pb-2">
-                    <Image src={item.image} alt={item.title} width={50} height={50} />
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={50}
+                    height={50}
+                  />
                   <div>
                     <h3 className="font-semibold">{item.title}</h3>
                     <p className="text-sm text-gray-600">
@@ -84,9 +90,16 @@ export const Navbar = () => {
               <p className="text-right font-bold text-lg">
                 Total: Rp{total.toLocaleString()}
               </p>
-              <button className="bg-green-500 text-white w-full py-2 rounded-lg mt-4">
-                Checkout
-              </button>
+              <Popover backdrop="blur" className=" text-white mt-4">
+                <PopoverTrigger>
+                  <Button className="bg-blue-700 hover:bg-blue-800 text-white font-bold">Beli Sekarang</Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[240px] bg-blue-500">
+                  <div className="px-1 py-2">
+                    <h1 className="text-small font-bold">Segera Hadir</h1>
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </div>
         </div>

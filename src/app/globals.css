@@ -315,6 +315,10 @@ body {
 
 /* cart */
 /* map */
+.map {
+  height: 50vh;
+  width: auto;
+}
 /* mobile mode */
 @media (max-width: 768px) {
   .map {
