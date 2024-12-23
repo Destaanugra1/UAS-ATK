@@ -4,8 +4,8 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 interface Upload {
   id: string;
   price: number;
-  title: string; // Tambahkan
-  image: string; 
+  title: string;
+  image: string;
   // add other properties of Upload here
 }
 
@@ -13,10 +13,15 @@ interface CartItem extends Upload {
   quantity: number;
 }
 
+interface UploadWithQuantity extends Upload {
+  quantity: number;
+}
+
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (item: Upload) => void;
+  addToCart: (item:  UploadWithQuantity) => void;
   removeFromCart: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void; // Tambahkan
   total: number;
 }
 
@@ -54,13 +59,23 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCart((prev) => prev.filter((cartItem) => cartItem.id !== id));
   };
 
+  const updateQuantity = (id: string, quantity: number) => {
+    setCart((prev) =>
+      prev.map((cartItem) =>
+        cartItem.id === id ? { ...cartItem, quantity } : cartItem
+      )
+    );
+  };
+
   const total = cart.reduce(
     (sum, cartItem) => sum + cartItem.price * cartItem.quantity,
     0
   );
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, total }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, updateQuantity, total }}
+    >
       {children}
     </CartContext.Provider>
   );

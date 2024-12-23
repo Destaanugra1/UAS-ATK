@@ -16,9 +16,9 @@ export default async function Home() {
           <Navbar />
           <HomeComp />
           <div className="flex flex-col md:flex-row flex-wrap justify-start gap-4">
-            {image.map((item) => (
-              <CartComp key={item.id} data={item} />
-            ))}
+              {image.map((item) => (
+                <CartComp key={item.id} data={item} />
+              ))}
           </div>
           <Faq />
           <Footer />

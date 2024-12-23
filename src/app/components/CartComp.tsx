@@ -4,6 +4,17 @@ import React, { useState } from "react";
 import type { Upload } from "@prisma/client";
 import { useCart } from "../../contexts/CartContext"; // Menggunakan useCart
 import Link from "next/link";
+import PopupCard from "./PopupCard"; // Import PopupCard component
+
+type Image = {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 const CartComp = ({ data }: { data: Upload }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -15,7 +26,7 @@ const CartComp = ({ data }: { data: Upload }) => {
   };
 
   const handleAddToCart = () => {
-    addToCart({ ...data, price: Number(data.price) }); // Menambahkan produk ke cart melalui context
+    addToCart({ ...data, price: Number(data.price), quantity: 1 }); // Menambahkan produk ke cart melalui context
     console.log("Item added to cart:", data);
     setIsPopupOpen(false); // Menutup popup setelah menambahkan ke cart
   };
@@ -33,8 +44,7 @@ const CartComp = ({ data }: { data: Upload }) => {
       <div
         id="card"
         onClick={handleClick}
-        className="bg-white hover:bg-slate-200 shadow-md rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
-      >
+        className="bg-white hover:bg-slate-200 shadow-md rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
         <Image
           alt={data.title}
           className="w-full h-48 object-cover"
@@ -51,8 +61,7 @@ const CartComp = ({ data }: { data: Upload }) => {
           <Link
             className="bg-green-700 p-2 rounded-xl text-white font-bold"
             href={`/detail/${data.id}`}
-            onClick={handleLinkClick}
-          >
+            onClick={handleLinkClick}>
             Lihat
           </Link>
         </div>
@@ -60,34 +69,11 @@ const CartComp = ({ data }: { data: Upload }) => {
 
       {/* Popup Card */}
       {isPopupOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="font-bold text-xl mb-4">{data.title}</h2>
-            <Image
-              alt={data.title}
-              className="w-full h-48 object-cover mb-4"
-              height="300"
-              src={data.image}
-              width="500"
-            />
-            <p className="text-lg mb-4">{data.description}</p>
-            <p className="text-gray-700 text-base mb-4">Rp{data.price}</p>
-            <div className="gap-4 flex">
-              <button
-                onClick={handleAddToCart}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg "
-              >
-                Add to Cart
-              </button>
-              <button
-                onClick={handleClosePopup}
-                className="bg-gray-300 text-black px-4 py-2 rounded-lg mt-2"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
+        <PopupCard
+          data={data}
+          onAddToCart={handleAddToCart} // Pass onAddToCart prop
+          onClose={handleClosePopup}
+        />
       )}
     </div>
   );
