@@ -62,20 +62,7 @@ const DetailPage = async ({ params }: DetailPageProps) => {
               </div>
               <div className="mt-4"></div>
               <div className="mt-4">
-                <div className="flex items-center mt-2">
-                  {/* <button
-              className="bg-gray-200 text-gray-700 px-3 py-1 rounded-l-full"
-              onClick={() => handleQuantityChange(-1)}
-            >
-              -
-            </button> */}
-                  {/* <button
-              className="bg-gray-200 text-gray-700 px-3 py-1 rounded-r-full"
-              onClick={() => handleQuantityChange(1)}
-            >
-              +
-            </button> */}
-                </div>
+                <div className="flex items-center mt-2"></div>
               </div>
               <div className="mt-4 flex gap-5">
                 {!session && (
@@ -89,7 +76,7 @@ const DetailPage = async ({ params }: DetailPageProps) => {
                 <Link
                   href="/"
                   className="bg-blue-600 text-white px-6 py-2 rounded-full gap-4">
-                  Back
+                  Kembali
                 </Link>
               </div>
             </div>

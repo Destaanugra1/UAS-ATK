@@ -24,7 +24,7 @@ const CreateForm = () => {
           type="text"
           name="description"
           className="py-2 px-4 rounded-sm border-gray-400"
-          placeholder="penjelasan"
+          placeholder="Category"
         />
       </div>
       <div aria-live="polite" aria-atomic="true">
