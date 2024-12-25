@@ -30,7 +30,7 @@ export const Navbar =  () => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar sticky">
         <div className="container flex justify-between items-center">
           <div className="logo text-xl font-bold">
             <Image src={Logo} alt="logo" width={50} height={50} />

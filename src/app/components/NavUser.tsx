@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/app/public/logo.png";
+import Logo from "../../app/public/logo2.png";
 import { auth, signOut } from "../../../auth";
 
 const NavUser = async () => {
@@ -9,10 +9,10 @@ const NavUser = async () => {
     <nav className="bg-white border-gray-200 border-b">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
         <Link href="/">
-          <Image src={Logo} alt="logo" width={128} height={128} priority />
+          <Image src={Logo} alt="logo" width={50} height={50} priority />
         </Link>
         <div className="flex items-center gap-3">
-          <ul className="hidden md:flex items-center gap-4 mr-5 font-semibold text-gray-600 hover:text-gray-800">
+          <ul className="md:flex md:text-xs items-center gap-4 mr-5 font-semibold text-gray-600 hover:text-gray-800">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -39,10 +39,10 @@ const NavUser = async () => {
                 type="button"
                 className="text-sm ring-2 bg-gray-100 rounded-full">
                 <Image
-                  src={session.user.image || "/avatar.png"}
+                  src={session.user.image || "/../../app/public/logo1.png"}
                   alt="avatar"
-                  width={64}
-                  height={64}
+                  width={40}
+                  height={40}
                   className="w-8 h-8 rounded-full"
                 />
               </button>

@@ -10,6 +10,7 @@ const Sidebar = () => {
 
   return (
     <>
+      <nav className=""></nav>
       <button
         onClick={toggleSidebar}
         aria-controls="default-sidebar"
@@ -103,11 +104,10 @@ const Sidebar = () => {
                   <path
                     fill-rule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3H6a1 1 0 100 2h3v3a1 1 0 102 0v-3h3a1 1 0 100-2h-3V7z"
-                    clip-rule="evenodd" />
+                    clip-rule="evenodd"
+                  />
                 </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Profile
-                </span>
+                <span className="flex-1 ms-3 whitespace-nowrap">Profile</span>
               </Link>
             </li>
             <li>
@@ -123,22 +123,18 @@ const Sidebar = () => {
                   <path
                     fill-rule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3H6a1 1 0 100 2h3v3a1 1 0 102 0v-3h3a1 1 0 100-2h-3V7z"
-                    clip-rule="evenodd" />
+                    clip-rule="evenodd"
+                  />
                 </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Back Menu
-                </span>
+                <span className="flex-1 ms-3 whitespace-nowrap">Back Menu</span>
               </Link>
             </li>
-            <li>
-              
-            </li>
+            <li></li>
           </ul>
         </div>
         <li>
           <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <div>
-            </div>
+            <div></div>
           </div>
         </li>
       </aside>

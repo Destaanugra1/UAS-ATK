@@ -40,41 +40,44 @@ const CartComp = ({ data }: { data: Upload }) => {
   };
 
   return (
-    <div>
-      <div
-        id="card"
-        onClick={handleClick}
-        className="bg-white hover:bg-slate-200 shadow-md rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-        <Image
-          alt={data.title}
-          className="w-full h-48 object-cover"
-          height="300"
-          src={data.image}
-          width="500"
-        />
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{data.title}</div>
-          <div className="text-lg mb-2">{data.description}</div>
-          <p className="text-gray-700 text-base">Rp{data.price}</p>
+    <div className="row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 g-4 row">
+      <div >
+        <div
+          data-aos="fade-up"
+          id="card"
+          onClick={handleClick}
+          className="bg-white hover:bg-slate-200 shadow-md rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+          <Image
+            alt={data.title}
+            className="w-full h-48 object-cover"
+            height="300"
+            src={data.image}
+            width="500"
+          />
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">{data.title}</div>
+            <div className="text-lg mb-2">{data.description}</div>
+            <p className="text-gray-700 text-base">Rp{data.price}</p>
+          </div>
+          <div className="px-6 py-4 flex justify-end">
+            <Link
+              className="bg-green-700 p-2 rounded-xl text-white font-bold"
+              href={`/detail/${data.id}`}
+              onClick={handleLinkClick}>
+              Lihat
+            </Link>
+          </div>
         </div>
-        <div className="px-6 py-4 flex justify-end">
-          <Link
-            className="bg-green-700 p-2 rounded-xl text-white font-bold"
-            href={`/detail/${data.id}`}
-            onClick={handleLinkClick}>
-            Lihat
-          </Link>
-        </div>
-      </div>
 
-      {/* Popup Card */}
-      {isPopupOpen && (
-        <PopupCard
-          data={data}
-          onAddToCart={handleAddToCart} // Pass onAddToCart prop
-          onClose={handleClosePopup}
-        />
-      )}
+        {/* Popup Card */}
+        {isPopupOpen && (
+          <PopupCard
+            data={data}
+            onAddToCart={handleAddToCart} // Pass onAddToCart prop
+            onClose={handleClosePopup}
+          />
+        )}
+      </div>
     </div>
   );
 };

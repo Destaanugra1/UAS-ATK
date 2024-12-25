@@ -9,7 +9,6 @@ import {
   FileText, 
   Briefcase,
   ShoppingCart,
-  Star,
   Grid
 } 
 from "lucide-react";
@@ -95,9 +94,6 @@ const HomeComp = async () => {
         </h2>
       </section>
       <section className="featured-products container">
-        <h2 className="flex items-center gap-2">
-          <Star size={24} /> Produk Unggulan
-        </h2>
         <div className="product-grid">
           {/* <!-- More product cards can be added here --> */}
         </div>
