@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { useCart } from "../../contexts/CartContext";
 import Image from "next/image";
-import Logo from "@/app/public/logo2.png";
+import Logo from "@/app/public/logo3.png";
 import {
   Button,
   Popover,

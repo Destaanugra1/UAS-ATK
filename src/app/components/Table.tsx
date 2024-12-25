@@ -22,7 +22,7 @@ export const TableData = ({ data }: { data: Upload[] }) => {
           <TableRow>
             <TableHead className="w-[100px]">id</TableHead>
             <TableHead>title</TableHead>
-            <TableHead>description</TableHead>
+            <TableHead>Category</TableHead>
             <TableHead className="">Price</TableHead>
             <TableHead className="">image</TableHead>
             <TableHead className="">Action</TableHead>

@@ -73,17 +73,19 @@ const HomeComp = async () => {
       <div className="hero-section">
         <div className="hero-slider">
           <div className="slide">
-            <div className="hero-content">
-              <h1>Peralatan Tulis Berkualitas</h1>
-              <p>
-                Temukan berbagai kebutuhan alat tulis untuk sekolah dan kantor
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <a href="#card" className="cta-button flex items-center gap-2 justify-center">
-                <ShoppingCart size={18} /> Belanja Sekarang
-              </a>
-              </div>
-            </div>
+          <div className="hero-content">
+                <div className="h1">
+                <h1>Peralatan Tulis Berkualitas</h1>
+                </div>
+                <p>
+                  Temukan berbagai kebutuhan alat tulis untuk sekolah dan kantor
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="#products" className="cta-button flex items-center gap-2 justify-center">
+                  <ShoppingCart size={18} /> Belanja Sekarang
+                </a>
+                </div>
+              </div>
           </div>
         </div>
       </div>
