@@ -13,7 +13,7 @@ export default function Layout({
   return (
     <CartProvider>
       <div className="p-8 ">
-        <div className="">
+        <div className="sticky top-0 z-50">
           <Navbar />
         </div>
         <HomeComp />

@@ -50,9 +50,9 @@ const CartComp = ({ data }: { data: Upload }) => {
           <Image
             alt={data.title}
             className="w-full h-48 object-cover"
-            height="300"
+            height={300}
             src={data.image}
-            width="500"
+            width={500}
           />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{data.title}</div>

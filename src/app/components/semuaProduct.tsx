@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import PopupCard from "./PopupCard";
 import { useCart } from "../../contexts/CartContext"; // Menggunakan useCart
+import Link from "next/link";
+// import { useRouter } from "next/navigation";
 
 type Image = {
   id: string;
@@ -15,7 +17,7 @@ type Image = {
   updatedAt: Date;
 };
 
-const KertasPage = () => {
+const ProductPage = () => {
   const [products, setProducts] = useState<Image[]>([]); // Data dari API
   const [searchQuery, setSearchQuery] = useState(""); // State untuk pencarian
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State untuk popup
@@ -29,7 +31,11 @@ const KertasPage = () => {
 
   const handleAddToCart = () => {
     if (selectedProduct) {
-      addToCart({ ...selectedProduct, price: Number(selectedProduct.price), quantity: 1 }); // Include quantity property
+      addToCart({
+        ...selectedProduct,
+        price: Number(selectedProduct.price),
+        quantity: 1,
+      }); // Include quantity property
       console.log("Item added to cart:", selectedProduct);
       setIsPopupOpen(false); // Menutup popup setelah menambahkan ke cart
     }
@@ -54,11 +60,19 @@ const KertasPage = () => {
   }, []);
 
   // Filter data berdasarkan pencarian dan deskripsi
-  const filteredProducts = products.filter(
-    (product) =>
-      product.description.toLowerCase() === "kertas" &&
-      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleLinkClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
+  // membuat useRoute ke page detail
+  // const router = useRouter();
+  // const handleClickPus = (item: Image) => {
+  //   router.push(`/detail/${item.id}`);
+  // };
 
   return (
     <div>
@@ -93,20 +107,28 @@ const KertasPage = () => {
               <div className="text-lg mb-2">{item.description}</div>
               <p className="text-gray-700 text-base">Rp{item.price}</p>
             </div>
+            <div className="flex justify-end px-6 py-4">
+              <Link
+                className="bg-green-700 p-2 rounded-xl text-end justify-end text-white font-bold"
+                href={`/detail/${item.id}`}
+                onClick={handleLinkClick}>
+                Lihat
+              </Link>
             </div>
-          ))}
-        </div>
-  
-        {/* popUp card */}
-        {isPopupOpen && selectedProduct && (
-          <PopupCard
-            data={selectedProduct}
-            onAddToCart={handleAddToCart}
-            onClose={handleClosePopup}
-          />
-        )}
+          </div>
+        ))}
       </div>
+
+      {/* popUp card */}
+      {isPopupOpen && selectedProduct && (
+        <PopupCard
+          data={selectedProduct}
+          onAddToCart={handleAddToCart}
+          onClose={handleClosePopup}
+        />
+      )}
+    </div>
   );
 };
 
-export default KertasPage;
+export default ProductPage;

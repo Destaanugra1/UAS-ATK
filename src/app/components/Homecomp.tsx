@@ -60,7 +60,7 @@ const HomeComp = async () => {
               </Link>
             </li>
             <li>
-              <Link href="/kategori/kantor" className="flex items-center gap-2">
+              <Link href="/category/kantor" className="flex items-center gap-2">
                 <Briefcase size={18} /> Peralatan Kantor
               </Link>
             </li>
