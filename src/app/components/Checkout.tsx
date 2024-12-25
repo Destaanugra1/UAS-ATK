@@ -10,7 +10,7 @@ const Checkout = ({ item }: { item: Upload }) => {
 
   const generatePaymentLink = async () => {
     setIsLoading(true);
-    const secret = process.env.NEXT_PUBLIC_SECRET;
+    const secret = process.env.NEXT_PUBLIC_SECRET
     if (!secret) {
       setIsLoading(false);
       throw new Error("NEXT_PUBLIC_SECRET is not defined");
