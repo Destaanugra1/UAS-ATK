@@ -3,6 +3,7 @@ import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collisi
 import Image from "next/image";
 import { auth } from "../../../auth";
 import Bacground from "../public/bgprofile.jpeg";
+import Avatar from "../public/avatarr.png";
 
 export async function BackgroundProfile() {
   const session = await auth();
@@ -20,7 +21,7 @@ export async function BackgroundProfile() {
           </div>
         </div>
       </h2> */}
-        <div className="">
+        <div className="md:h-[100vh]">
           {session && (
             <>
               <div className="container mx-auto p-4">
@@ -42,7 +43,7 @@ export async function BackgroundProfile() {
                         width={100}
                         quality={100}
                         src={
-                          session.user.image || "/../../app/public/logo1.png"
+                          session.user.image || Avatar
                         }
                       />
                     </div>

@@ -12,7 +12,6 @@ export default async function Home() {
   return (
     <CartProvider>
       {" "}
-      {/* Membungkus seluruh aplikasi dengan CartProvider */}
       <section id="home">
         <div className="container">
           <div className="home_content">

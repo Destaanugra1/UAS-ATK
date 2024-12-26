@@ -81,7 +81,7 @@ const HomeComp = async () => {
                   Temukan berbagai kebutuhan alat tulis untuk sekolah dan kantor
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <a href="#products" className="cta-button flex items-center gap-2 justify-center">
+                <a href="#card" className="cta-button flex items-center gap-2 justify-center">
                   <ShoppingCart size={18} /> Belanja Sekarang
                 </a>
                 </div>

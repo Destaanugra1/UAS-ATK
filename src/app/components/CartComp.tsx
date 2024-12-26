@@ -21,13 +21,11 @@ const CartComp = ({ data }: { data: Upload }) => {
   const { addToCart } = useCart(); // Mengakses fungsi addToCart dari context
 
   const handleClick = () => {
-    console.log("Product clicked:", data);
     setIsPopupOpen(true); // Menampilkan popup
   };
 
   const handleAddToCart = () => {
     addToCart({ ...data, price: Number(data.price), quantity: 1 }); // Menambahkan produk ke cart melalui context
-    console.log("Item added to cart:", data);
     setIsPopupOpen(false); // Menutup popup setelah menambahkan ke cart
   };
 

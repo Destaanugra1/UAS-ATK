@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../app/public/logo2.png";
 import { auth, signOut } from "../../../auth";
+import Avatar from "@/app/public/avatarr.png";
 
 const NavUser = async () => {
   const session = await auth();
@@ -39,7 +40,7 @@ const NavUser = async () => {
                 type="button"
                 className="text-sm ring-2 bg-gray-100 rounded-full">
                 <Image
-                  src={session.user.image || "/../../app/public/logo1.png"}
+                  src={session.user.image || Avatar}
                   alt="avatar"
                   width={40}
                   height={40}
