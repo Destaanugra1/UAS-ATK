@@ -1,5 +1,6 @@
 import Footer from "../components/FooterComp"
 import NavUser from "../components/NavUser"
+import "./login.css";
 
 const AuthLAyout = ({children}:{children: React.ReactNode}) => {
   return (

@@ -1,4 +1,4 @@
-import {IoLogoGoogle, IoLogoGithub} from "react-icons/io5"
+import {IoLogoGoogle, IoLogoGithub, IoLogoFacebook} from "react-icons/io5"
 import { signIn } from "../../../../auth"
 
 export const GoogleButton = () => {
@@ -24,6 +24,20 @@ export const GithubButton = () => {
       <button type="submit" className="flex items-center justify-center gap-1 py-2.5 rounded-lg uppercase text-white font-medium text-sm bg-gray-500 w-full">
         <IoLogoGithub />
         Login dengan Github
+      </button>
+    </form>
+  )
+}
+
+export const FacebookButton = () => {
+  return (
+    <form action={async() =>{
+      "use server";
+      await signIn("facebook", {callbackUrl: "/"})
+    }}>
+      <button type="submit" className="flex items-center justify-center gap-1 py-2.5 rounded-lg uppercase text-white font-medium text-sm bg-blue-600 w-full">
+        <IoLogoFacebook />
+        Login dengan Facebook
       </button>
     </form>
   )

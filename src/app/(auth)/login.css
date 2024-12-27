@@ -1,0 +1,17 @@
+.custom-input {
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+.custom-button {
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+.custom-divider {
+  border-top: 2px solid black;
+  width: 40%;
+}

@@ -1,5 +1,5 @@
 import FormLogin from "@/app/components/auth/form-login"
-import { GithubButton, GoogleButton } from "@/app/components/ui/sosial-button"
+import { FacebookButton, GithubButton, GoogleButton } from "@/app/components/ui/sosial-button"
 
 const Login = () => {
   return (
@@ -13,6 +13,7 @@ const Login = () => {
     </div>
     <GoogleButton />
     <GithubButton />
+    <FacebookButton />
   </div>
   </>
   )

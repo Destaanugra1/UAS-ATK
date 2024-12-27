@@ -5,6 +5,8 @@ import { SignInSchema } from "@/lib/zod";
 import { compareSync } from "bcrypt-ts";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
+import Facebook from "next-auth/providers/facebook";
+
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
@@ -14,6 +16,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     Google,
     Github,
+    Facebook,
     Credentials({
       credentials: {
         email: {},
