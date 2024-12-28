@@ -63,7 +63,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  position: sticky;
 }
 
 .logo {
@@ -350,6 +349,24 @@ body {
   border-radius: 5px;
 }
 /* map */
+.map-container {
+  width: 100%;
+  position: relative;
+}
+
+.map {
+  position: relative;
+  height: 50vh;
+  width: 100%;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 50vh;
+  }
+}
+
 /* mobile mode */
 @media (max-width: 768px) {
   .map {
@@ -512,21 +529,23 @@ body {
   100% { border-right-color: rgba(0, 0, 0, 0); }
 }
 
-@keyframes blinkCursorStop {
-  0% { border-right-color: rgba(0, 0, 0, 0); }
-  100% { border-right-color: transparent; }
+.h1 {
+  overflow: hidden; 
+  border-right: 0.15em solid rgba(0, 0, 0, 0); 
+  white-space: nowrap; 
+  margin: 0 auto;
+  letter-spacing: 0.15em; 
+  animation: 
+    typewriter 6s steps(500, end) 1s 1 normal both,
+    blinkCursor 500ms steps(40, end) 4s 1 normal both;
+  font-size: 2rem; 
 }
 
-.h1 {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid rgba(0, 0, 0, 0); /* Creates the cursor effect */
-  white-space: nowrap; /* Keeps the text on a single line */
-  margin: 0 auto; /* Centers the text */
-  letter-spacing: 0.15em; /* Adjusts the spacing between letters */
-  animation: 
-    typewriter 4s steps(200, end) 1s 1 normal both,
-    blinkCursor 500ms steps(200, end) 1s 4 normal both,
-    blinkCursorStop 0.5s step-end 5s 1 normal both;
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 1.5rem; 
+    white-space: normal;
+  }
 }
 
 @layer base {

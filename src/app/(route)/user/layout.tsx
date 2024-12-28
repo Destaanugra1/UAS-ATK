@@ -1,4 +1,5 @@
-import NavUser from "@/app/components/NavUser";
+import "./user.css"
+import NavUserPage from "@/app/components/nav-user2";
 
 export default function UserLayout({
   children,
@@ -7,7 +8,9 @@ export default function UserLayout({
 }>) {
   return (
     <div className="">
-      <NavUser />
+      <div className="mb-4">
+      <NavUserPage />
+      </div>
       <main> {children}</main>
     </div>
   )

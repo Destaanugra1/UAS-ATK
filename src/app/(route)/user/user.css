@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+}
+
+nav ul {
+    size: 1.5rem;
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: #000;
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+nav a.active {
+    color: #000;
+    opacity: 1;
+}
+
+li {
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+li:hover {
+    color: #3498db;
+    transition: 0.4s all ease;
+}
+
+li::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #3498db;
+    transform-origin: bottom right;
+    transition: 0.5s all ease;
+}
+
+li:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.phone {
+    opacity: 0.7;
+}
+
+.about-section {
+    padding: 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.email {
+    color: #3498db;
+    margin-bottom: 4rem;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.text-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.text-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.profile-image img{
+    width: 250px;
+    height: 250px;
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+    margin-top: -200px;
+    border-radius: 100%;
+}
+
+.location {
+    display: flex;
+    gap: 1rem;
+    opacity: 0.7;
+}
+
+.divider {
+    color: #3498db;
+}
+
+@media (max-width: 768px) {
+    .profile-image img {
+        margin-top: -18px;
+        weight: 100px;
+        height: 100px;
+        max-width: 130px;
+    }
+
+}
+
+.text-content p {
+    font-size: 1rem;
+    margin-bottom: 0.50rem;
+}
