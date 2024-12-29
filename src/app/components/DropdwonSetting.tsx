@@ -18,6 +18,7 @@ import {
 } from "@/app/components/ui/dropdown-menu"
 import { Wrench } from "lucide-react"
 import { auth } from "../../../auth"
+import SessionDashboard from "./ui/session-dashboard"
 import SessionSignout from "./ui/session-singout"
 
 interface Props {
@@ -55,7 +56,7 @@ export async function  DropdownMenuDemo() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LifeBuoy />
-          <span>Support</span>
+          <span><SessionDashboard /></span>
         </DropdownMenuItem>
         <DropdownMenuItem disabled>
           <Cloud />

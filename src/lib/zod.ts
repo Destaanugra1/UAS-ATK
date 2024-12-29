@@ -1,4 +1,4 @@
-import { object, string } from "zod";
+import { object, string, z } from "zod";
 
 export const RegisterSchema = object({
   name: string().min(3, "Nama Harus lebih dari 3 karakter"),
@@ -19,4 +19,10 @@ export const SignInSchema = object({
   password: string()
     .min(6, "Password harus lebih dari 6 karakter")
     .max(32, "Password harus kurang dari 32 karakter"),
+})
+
+export const EditUserSchema = object({
+  name: string().min(3, "Nama Harus lebih dari 3 karakter").optional(),
+  email: string().email("Email tidak valid").optional(),
+  role: z.enum(["admin", "user"]).optional(),
 })

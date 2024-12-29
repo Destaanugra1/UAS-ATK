@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "./prisma";
 import { getImagesById } from "./data";
-import { RegisterSchema, SignInSchema } from "./zod";
+import { EditUserSchema, RegisterSchema, SignInSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
 import { signIn } from "../../auth";
 import { AuthError } from "next-auth";
@@ -198,5 +198,46 @@ export const signIncCredential = async (
       }
     }
     throw error;
+  }
+};
+
+export const editUser = async (
+  id: string,
+  prevState: unknown,
+  formData: FormData
+) => {
+  // Validasi data menggunakan Zod
+  const validatedFields = EditUserSchema.safeParse(Object.fromEntries(formData.entries()));
+
+  if (!validatedFields.success) {
+    // Jika validasi gagal, kirimkan error
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  const { name, email, role } = validatedFields.data;
+
+  // Ambil data pengguna sebelumnya dari database
+  const data = await prisma.user.findUnique({
+    where: { id: id },
+  });
+
+  if (!data) return { message: "User not found" };
+
+  // Update data pengguna
+  try {
+    await prisma.user.update({
+      where: { id: id },
+      data: {
+        name,  // Update name
+        email, // Update email
+        role,  // Update role
+      },
+    });
+    redirect("/dashboard");
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return { message: "Failed to update user" };
   }
 };

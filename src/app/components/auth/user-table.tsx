@@ -1,29 +1,44 @@
 import React from "react";
 import { getUsers } from "@/lib/data";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/app/components/ui/table";
+import { EditButtomUser } from "../button";
 
-const UserTable = async() => {
+const UserTable = async () => {
   const users = await getUsers();
-  if(!users?.length) return <h1 className="text-2xl">Tidak ada user</h1>
+  if (!users?.length) return <h1 className="text-2xl">Tidak ada user</h1>;
   return (
-    <div className="w-full flex justify-center">
-      <table className="bg-white mt-3">
-        <thead className="border-b border-gray-100">
-          <tr>
-            <th className="py-3 px-6 text-left text-sm">Name</th>
-            <th className="py-3 px-6 text-left text-sm">Emai</th>
-            <th className="py-3 px-6 text-left text-sm">Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user)=>(
-          <tr key={user.id}>
-            <td className="py-3 px-6">{user.name}</td>
-            <td className="py-3 px-6">{user.email}</td>
-            <td className="py-3 px-6">{user.role}</td>
-          </tr>
+    <div className="flex">
+      <Table className="border justify-center">
+        <TableCaption>Belanja Puas Harga Pas</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead className="">Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {users.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell className="font-medium">{user.name}</TableCell>
+              <TableCell className="font-medium">{user.email}</TableCell>
+              <TableCell>{user.role}</TableCell>
+              <TableCell className="flex space-x-2 text-white">
+                <EditButtomUser id={user.id} />
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };

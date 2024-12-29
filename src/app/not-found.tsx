@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import { ButtonBack } from "./components/button";
 
 const NotFoundPage = () => {
   return (
@@ -12,9 +12,7 @@ const NotFoundPage = () => {
               Page Not Found
             </div>
           </div>
-          <Link href="/" className="mt-8 px-6 py-2 border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition-colors duration-300 rounded-2xl">
-            Go Home
-          </Link>
+          <ButtonBack />
         </div>
       </div>
     </>

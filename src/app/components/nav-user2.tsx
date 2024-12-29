@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SessionDashboard from "./ui/session-dashboard";
 import Logo from "@/app/public/logo3.png"
 import Image from "next/image";
 const NavUserPage = () => {
@@ -31,7 +30,6 @@ const NavUserPage = () => {
                 href="/dashboard"
                 className="text-black text-xl cursor-pointer no-underline opacity-70 hover:opacity-100 transition-all"
               >
-                <SessionDashboard />
               </a>
             </li>
             <li>

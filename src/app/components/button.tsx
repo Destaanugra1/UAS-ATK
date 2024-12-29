@@ -1,5 +1,6 @@
 "use client";
 import { deleteImage } from "@/lib/action";
+import { Button } from "@nextui-org/button";
 import { clsx } from "clsx";
 import Link from "next/link";
 import { useFormStatus } from "react-dom";
@@ -29,8 +30,17 @@ export const EditButtom = ({ id }: { id: string }) => {
   return (
     <Link
       href={`edit/${id}`}
-      className="py-2 p-2 text-sm bg-blue-600 rounded-bl-md text-center w-full hover:bg-blue-300"
-    >
+      className="py-2 p-2 text-sm bg-blue-600 rounded-bl-md text-center w-full hover:bg-blue-300">
+      Edit
+    </Link>
+  );
+};
+
+export const EditButtomUser = ({ id }: { id: string }) => {
+  return (
+    <Link
+      href={`dashboard/edit/user/${id}`}
+      className="py-2 p-2 text-sm bg-blue-600 rounded-bl-md text-center w-full hover:bg-blue-300">
       Edit
     </Link>
   );
@@ -51,8 +61,7 @@ export const DeleteButton = ({ id }: { id: string }) => {
     <form
       action={handleDeleteAction}
       method="post"
-      className="py-2 p-2 text-sm bg-red-600 rounded  hover:bg-red-400 text-center"
-    >
+      className="py-2 p-2 text-sm bg-red-600 rounded  hover:bg-red-400 text-center">
       <input type="hidden" name="id" value={id} />
       <DeleteBtn />
     </form>
@@ -72,21 +81,39 @@ export const RegisterButton = () => {
   const { pending } = useFormStatus();
   return (
     <button
-    disabled={pending}
-    type="submit"
-    className="w-full bg-blue-700 font-medium rounded-lg px-5 py-2.5 text-center uppercase hover:bg-blue-800 text-white mt-4">
-    {pending ? "Registering..." : "Register"}
-  </button>
-  )
-}
+      disabled={pending}
+      type="submit"
+      className="w-full bg-blue-700 font-medium rounded-lg px-5 py-2.5 text-center uppercase hover:bg-blue-800 text-white mt-4">
+      {pending ? "Registering..." : "Register"}
+    </button>
+  );
+};
 export const LoginButton = () => {
   const { pending } = useFormStatus();
   return (
     <button
-    disabled={pending}
-    type="submit"
-    className="w-full bg-blue-700 font-medium rounded-lg px-5 py-2.5 text-center uppercase hover:bg-blue-800 text-white mt-4">
-    {pending ? "Loading..." : "Login"}
-  </button>
-  )
-}
+      disabled={pending}
+      type="submit"
+      className="w-full bg-blue-700 font-medium rounded-lg px-5 py-2.5 text-center uppercase hover:bg-blue-800 text-white mt-4">
+      {pending ? "Loading..." : "Login"}
+    </button>
+  );
+};
+
+export const ButtonBack = () => {
+  const handleBack = () => {
+    window.history.back();
+  }
+  return (
+    <>
+      <div>
+        <Button
+          onClick={handleBack}
+          type="button"
+          className="bg-blue-700 text-white w-full font-medium py-2.5 px-6 text-base rounded-sm hover:bg-blue-600">
+          Back
+        </Button>
+      </div>
+    </>
+  );
+};
