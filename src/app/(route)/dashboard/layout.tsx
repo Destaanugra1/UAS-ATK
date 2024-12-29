@@ -9,8 +9,8 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen">
-      <Sidebar /> {/* Sidebar akan tetap ada */}
+    <div className="flex ">
+      <Sidebar />
       <main className="flex-1 bg-gray-50 dark:bg-gray-900 p-4">{children}</main>
     </div>
   );

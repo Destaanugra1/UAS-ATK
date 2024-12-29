@@ -6,15 +6,15 @@ export default async function Dashboard() {
   const data = await getImages();
   return (
     <>
-      <div className="">
-        <div className="text-end  rounded-md p-2 text-white">
+      <div className="mt-20">
+        <div className="text-end  rounded-md p-2 text-white mb-4">
           <Link
             className="bg-blue-700 p-2 hover:bg-blue-500 transition rounded"
             href="/dashboard/create">
             Tambah Barang
           </Link>
         </div>
-        <div className="mt-4">
+        <div className="">
           <TableData data={data} />
         </div>
       </div>
