@@ -1,5 +1,4 @@
 "use client";
-// import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import PopupCard from "./PopupCard";
@@ -15,7 +14,7 @@ type Image = {
   updatedAt: Date;
 };
 
-const PageKantor = () => {
+const PageTulis = () => {
   const [products, setProducts] = useState<Image[]>([]); // Data dari API
   const [searchQuery, setSearchQuery] = useState(""); // State untuk pencarian
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State untuk popup
@@ -39,10 +38,6 @@ const PageKantor = () => {
     setIsPopupOpen(false); // Menutup popup
   };
 
-  // const handleLinkClick = (event: React.MouseEvent) => {
-  //     event.stopPropagation();
-  //   };
-
   // Ambil data dari API
   useEffect(() => {
     fetch("/api/pencarian")
@@ -53,7 +48,7 @@ const PageKantor = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const keywords = ["kantor", "rumah"]; 
+  const keywords = ["alat", "tulis"]; 
 
   const filteredProducts = products.filter(
     (product) =>
@@ -112,4 +107,4 @@ const PageKantor = () => {
   );
 };
 
-export default PageKantor;
+export default PageTulis;

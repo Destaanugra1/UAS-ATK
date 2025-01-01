@@ -241,3 +241,24 @@ export const editUser = async (
     return { message: "Failed to update user" };
   }
 };
+
+export const deleteUser = async (id: string) => {
+  // Check if user exists
+  const user = await prisma.user.findUnique({
+    where: { id },
+  });
+
+  if (!user) return { message: "User not found" };
+
+  // Delete user
+  try {
+    await prisma.user.delete({
+      where: { id },
+    });
+    revalidatePath("/dashboard/admin");
+    return { message: "User deleted successfully" };
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return { message: "Failed to delete user" };
+  }
+};

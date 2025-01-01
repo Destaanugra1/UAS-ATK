@@ -44,7 +44,7 @@ export const TableData = ({ data }: { data: Upload[] }) => {
                     width={50}
                   />
                 </TableCell>
-                <TableCell className="flex space-x-2 text-white">
+                <TableCell className="flex gap-4 text-white">
                   <EditButtom id={item.id} />
                   <DeleteButton id={item.id} />
                 </TableCell>

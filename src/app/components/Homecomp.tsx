@@ -60,7 +60,7 @@ const HomeComp = async () => {
                   Temukan berbagai kebutuhan alat tulis untuk sekolah dan kantor
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <a href="#products" className="cta-button flex items-center gap-2 justify-center">
+                <a href="#card" className="cta-button flex items-center gap-2 justify-center">
                   <ShoppingCart size={18} /> Belanja Sekarang
                 </a>
                 </div>
@@ -72,18 +72,18 @@ const HomeComp = async () => {
           <div className="container">
             <ul className="category-list">
               <li className="alat-tulis">
-                <Link href="/kategori/alat-tulis" className="md:text-hidden flex items-center gap-2">
+                <Link href="/category/tulis" className="md:text-hidden flex items-center gap-2">
                   <Pencil size={18} /> Alat Tulis
                 </Link>
               </li>
               <li className="kertas">
-                <Link href="/kategori/kertas" className="flex items-center gap-2">
+                <Link href="/category/kertas" className="flex items-center gap-2">
                   <FileText size={18} /> Kertas
                 </Link>
               </li>
               <li className="kantor">
-                <Link href="/kategori/kantor" className="flex items-center gap-2">
-                  <Briefcase size={18} /> Peralatan Kantor
+                <Link href="/category/kantor" className="flex items-center gap-2">
+                  <Briefcase size={18} /> Kantor
                 </Link>
               </li>
             </ul>

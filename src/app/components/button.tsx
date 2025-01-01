@@ -1,5 +1,5 @@
 "use client";
-import { deleteImage } from "@/lib/action";
+import { deleteImage, deleteUser } from "@/lib/action";
 import { Button } from "@nextui-org/button";
 import { clsx } from "clsx";
 import Link from "next/link";
@@ -53,7 +53,29 @@ export const DeleteButton = ({ id }: { id: string }) => {
 
     const result = await deleteImage(imageId);
     if (result?.message) {
-      console.error(result.message); // Anda bisa menambahkan notifikasi atau log sesuai kebutuhan
+      console.error(result.message);
+    }
+  };
+
+  return (
+    <form
+      action={handleDeleteAction}
+      method="post"
+      className="py-2 p-2 text-sm bg-red-600 rounded  hover:bg-red-400 text-center">
+      <input type="hidden" name="id" value={id} />
+      <DeleteBtn />
+    </form>
+  );
+};
+
+export const DeleteButtonUser = ({ id }: { id: string }) => {
+  const handleDeleteAction = async (formData: FormData) => {
+    const userId = formData.get("id") as string;
+    if (!userId) return;
+
+    const result = await deleteUser(userId);
+    if (result?.message) {
+      console.error(result.message);
     }
   };
 

@@ -24,6 +24,16 @@ export const getImagesById = async (id: string) => {
   }
 };
 
+export const DataProduct = async () => {
+  try {
+    const count = await prisma.upload.count()
+    return count
+  } catch {
+    throw new Error("Failed to fetch data");
+  }
+};
+
+
 export const getUsers = async() => {
   const session = await auth();
   if(!session || !session.user || session.user.role !== "admin") redirect("user");
@@ -31,6 +41,18 @@ export const getUsers = async() => {
   try {
     const users = await prisma.user.findMany();
     return users
+  }catch (error) {
+    console.log(error);
+  }
+}
+
+export const getJumlahUser = async() => {
+  const session = await auth();
+  if(!session || !session.user || session.user.role !== "admin") redirect("user");
+
+  try {
+    const count = await prisma.user.count();
+    return count
   }catch (error) {
     console.log(error);
   }
