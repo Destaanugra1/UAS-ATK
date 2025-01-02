@@ -5,7 +5,7 @@ const NavUserPage = () => {
 
   return (
     <div className="relative">
-      <nav className="flex items-center justify-between px-4 md:px-16 py-4 md:py-8 bg-white shadow-md">
+      <nav className="flex items-center justify-between px-4 md:px-16 py-4 md:py-16 bg-white shadow-md">
         {/* Logo */}
         <div className="">
           <Link href="/">
