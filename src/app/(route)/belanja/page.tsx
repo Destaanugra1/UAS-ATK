@@ -1,10 +1,10 @@
+import CartComp from "@/app/components/CartComp";
+import Faq from "@/app/components/FaqComp";
+import Footer from "@/app/components/FooterComp";
+import HomeComp from "@/app/components/Homecomp";
+import { Navbar } from "@/app/components/Navbar";
 import { CartProvider } from "@/contexts/CartContext";
-import { Navbar } from "../components/Navbar";
-import HomeComp from "../components/Homecomp";
-import CartComp from "../components/CartComp";
-import Faq from "../components/FaqComp";
-import Footer from "../components/FooterComp";
-import { getImages } from "../../lib/data";
+import { getImages } from "@/lib/data";
 import Link from "next/link";
 
 export default async function Home() {

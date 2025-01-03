@@ -9,7 +9,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/components/ui/table";
-import { DeleteButtonUser, EditButtomUser } from "../button";
+import { HandleDeleteUser } from "../AlertDialog";
+import { EditButtomUser } from "../button";
 
 const UserTable = async () => {
   const users = await getUsers();
@@ -17,7 +18,7 @@ const UserTable = async () => {
 
   return (
     <div className="ml-64 flex-1 p-8">
-      <div className="rounded-lg bg-white shadow">
+      <div className="rounded-lg bg-white border shadow">
         <Table>
           <TableCaption>Belanja Puas Harga Pas</TableCaption>
           <TableHeader>
@@ -34,9 +35,9 @@ const UserTable = async () => {
                 <TableCell className="font-medium">{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.role}</TableCell>
-                <TableCell className="flex space-x-2">
+                <TableCell className="flex space-x-2 text-white font-bold ">
                   <EditButtomUser id={user.id} />
-                  <DeleteButtonUser id={user.id} />
+                  <HandleDeleteUser id={user.id}/>
                 </TableCell>
               </TableRow>
             ))}

@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-// import localFont from "next/font/local";
 import "./globals.css";
+import "./Home.css";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 
 export const metadata: Metadata = {
   title: "Alat Tulis",
-  description: "Menjual Perlatan Tulis dan kantor",
+  description: "Menjual Peralatan Tulis dan Kantor",
 };
 
 export default function RootLayout({
@@ -23,19 +13,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
-      <html lang="en">
-        <body>
-          <div className="">
-            {/* <SignedOut>
+    <html lang="en">
+      <body>
+        <div className="">
+          {/* <SignedOut>
             <SignInButton/>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn> */}
-          </div>
-          {children}
-        </body>
-      </html>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn> */}
+        </div>
+        {children}
+      </body>
+    </html>
   );
 }

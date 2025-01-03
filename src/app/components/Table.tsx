@@ -11,7 +11,8 @@ import {
 } from "@/app/components/ui/table";
 import type { Upload } from "@prisma/client";
 import Image from "next/image";
-import { DeleteButton, EditButtom } from "./button";
+import {  EditButtom } from "./button";
+import { HandleDeleteProduct } from "./AlertDialog";
 
 export const TableData = ({ data }: { data: Upload[] }) => {
   return (
@@ -46,7 +47,7 @@ export const TableData = ({ data }: { data: Upload[] }) => {
                 </TableCell>
                 <TableCell className="flex gap-4 text-white">
                   <EditButtom id={item.id} />
-                  <DeleteButton id={item.id} />
+                  <HandleDeleteProduct id={item.id} />
                 </TableCell>
               </TableRow>
             ))}
