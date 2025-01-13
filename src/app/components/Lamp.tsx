@@ -19,7 +19,10 @@ export function LampDemo() {
       >
         My Team <br/>
       </motion.h1>
-        <Link className="p-4 px-4 " href="/">Learn More</Link>
+      <div className="flex gap-5 text-white">
+        <Link className="animate__animated animate__zoomIn animate__delay-50s mt-20 p-4 px-4" href="#team">Learn More</Link>
+        <Link className="animate__animated animate__zoomIn animate__delay-50s mt-20 p-4 px-4 " href="/belanja">Back</Link>
+        </div>
     </LampContainer>
   );
 }
