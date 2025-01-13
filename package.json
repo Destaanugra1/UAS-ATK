@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
-    "@clerk/elements": "^0.22.2",
-    "@clerk/nextjs": "^6.9.4",
     "@nextui-org/button": "^2.2.7",
     "@nextui-org/react": "^2.6.8",
     "@nextui-org/system": "^2.4.4",
