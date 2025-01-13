@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import PopupCard from "./PopupCard";
 import { useCart } from "../../contexts/CartContext"; // Menggunakan useCart
+import Link from "next/link";
 
 type Image = {
   id: string;
@@ -93,6 +94,14 @@ const KertasPage = () => {
               <div className="text-lg mb-2">{item.description}</div>
               <p className="text-gray-700 text-base">Rp{item.price}</p>
             </div>
+            <div className="px-6 py-4 flex justify-end">
+            <Link
+              className="bg-green-700 p-2 rounded-xl text-white font-bold"
+              href={`/detail/${item.id}`}
+              >
+              Lihat
+            </Link>
+          </div>
             </div>
           ))}
         </div>

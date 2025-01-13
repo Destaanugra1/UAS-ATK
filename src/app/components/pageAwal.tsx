@@ -74,7 +74,8 @@ const PageAwal = () => {
           <section
             className="feature-section"
             data-aos="fade-left"
-            data-aos-duration="4000">
+            data-aos-duration="4000"
+            id="#">
             <div
               className="feature-content"
               data-aos="fade-right"

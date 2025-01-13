@@ -8,7 +8,7 @@ const NavUserPage = () => {
       <nav className="flex items-center justify-between bg-white shadow-md">
         {/* Logo */}
         <div className="">
-          <Link href="/">
+          <Link href="/belanja">
             <Image src={Logo} alt="logo" width={50} height={50} />
           </Link>
         </div>

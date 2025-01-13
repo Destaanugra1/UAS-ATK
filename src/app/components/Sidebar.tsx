@@ -107,11 +107,11 @@ const Navigation = () => {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/belanja"
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                 >
                   <LogOut className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                  <span className="ml-3">Back Menu</span>
+                  <span className="ml-3">Lihat Barang</span>
                 </Link>
               </li>
             </ul>

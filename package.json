@@ -37,6 +37,7 @@
     "react-dom": "^18",
     "react-icon": "^1.0.0",
     "react-icons": "^5.4.0",
+    "react-use-form-state": "^0.13.2",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.0.3",
