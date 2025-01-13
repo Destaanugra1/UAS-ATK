@@ -20,6 +20,7 @@ import { Wrench } from "lucide-react"
 import { auth } from "../../../auth"
 import SessionDashboard from "./ui/session-dashboard"
 import SessionSignout from "./ui/session-singout"
+import Link from "next/link"
 
 interface Props {
   text: string;
@@ -50,7 +51,9 @@ export async function  DropdownMenuDemo() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <Users />
+            <Link href="/kelompok">
             <span>Team Projek</span>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

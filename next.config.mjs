@@ -29,6 +29,18 @@ const nextConfig = {
       protocol: 'https',
       hostname: 'platform-lookaside.fbsbx.com',
     },
+    {
+      protocol: 'https',
+      hostname: 'images.unsplash.com',
+    },
+    {
+      protocol: 'https',
+      hostname: 'assets.aceternity.com',
+    },
+    {
+      protocol: 'https',
+      hostname: 'assets.aceternity.com',
+    },
   ]
   }
 };
