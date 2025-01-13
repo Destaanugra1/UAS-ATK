@@ -19,7 +19,7 @@ export function LampDemo() {
       >
         My Team <br/>
       </motion.h1>
-        <Link className="p-4 px-4 " href="">Learn More</Link>
+        <Link className="p-4 px-4 " href="/kelompok">Learn More</Link>
     </LampContainer>
   );
 }
